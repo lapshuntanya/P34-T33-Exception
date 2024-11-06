@@ -3,11 +3,15 @@
 Tariff::Tariff()
 {
     name = "none";
-
 }
 
 Tariff::Tariff(std::string name)
 {
+    if (name.empty()) throw new NameException("empty string");
+
+    if(name.find("XXX") != -1)
+        throw new NameException("bad word(((", name);
+
     this->name = name;
 }
 
