@@ -61,10 +61,31 @@ using namespace std;
 int main() {
 	Provider kyivstar("Kyivstar");
 
-	kyivstar.addTariff(new SecondsTariff("day", 0.01));
-	kyivstar.addTariff(new MinutesTariff("night", 0.15));
-	kyivstar.addTariff(new MinutesTariff("XXX", -15));
+	try { kyivstar.addTariff(new SecondsTariff("day", 0.01)); }
+	catch (MobileException* obj) { 
+		cout << obj->showMessage() << endl; delete obj;
+	}
 
+	try {kyivstar.addTariff(new MinutesTariff("night", 0.15));}
+	catch (MobileException* obj) {
+		cout << obj->showMessage() << endl; delete obj;
+	}
+
+	try {kyivstar.addTariff(new MinutesTariff("XXX", 15));}
+	catch (MobileException* obj) {
+		cout << obj->showMessage() << endl; delete obj;
+	}
+
+	try { kyivstar.addTariff(new MinutesTariff("", 15)); }
+	catch (MobileException* obj) {
+		cout << obj->showMessage() << endl; delete obj;
+	}
+
+	try { kyivstar.addTariff(new SecondsTariff("day", -99)); }
+	catch (MobileException* obj) {
+		cout << obj->showMessage() << endl; delete obj;
+	}
+	cout << "----------------------------------------\n\n";
 	kyivstar.showList();
 
 }
