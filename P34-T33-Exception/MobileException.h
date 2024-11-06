@@ -48,7 +48,7 @@ public:
 	}
 
 	string showMessage()const override {
-		return "SecondsException: " + text + ".\nPrice: " +
+		return "SecondsException: " + text + ".\nSeconds: " +
 			std::to_string(seconds) + ".";
 	}
 };
