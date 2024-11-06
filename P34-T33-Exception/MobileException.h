@@ -43,7 +43,7 @@ public:
 class SecondsException : public MobileException {
 	int seconds;
 public:
-	SecondsException(string text, float price) :MobileException(text) {
+	SecondsException(string text, int seconds):MobileException(text) {
 		this->seconds = seconds;
 	}
 
